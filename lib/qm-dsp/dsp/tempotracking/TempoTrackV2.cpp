@@ -165,10 +165,8 @@ TempoTrackV2::calculateBeatPeriod(const vector<double> &df,
             std::fill(dfframe.begin() + l, dfframe.end(), 0.0);
         }
         
-        // Avoid creating an invalid intermediate iterator when i is negative.
-        // Compute the integer offsets first, then advance the iterator once.
-        std::copy(df.begin() + (i + k), df.begin() + (i + l),
-                  dfframe.begin() + k);
+        std::copy(df.begin() + i + k, df.begin() + i + l,
+                      dfframe.begin() + k);
 
         // Apply the resonator comb filter (RCF) bank to the window
         // The result is a vector of filter responses for different periods.
